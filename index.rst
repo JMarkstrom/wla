@@ -867,8 +867,8 @@ Some Operating Systems such as **Windows 7** does not support TLS 1.2 natively a
 To learn more, please refer to  `Microsoft documentation <https://support.microsoft.com/en-ie/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi>`_
 
 
-Registry keys
-=============
+Working with the Registry
+=========================
 
 Registry entries for :abbr:`WLA (Windows Logon Agent)` largely reflects GUI options in the Logon Manager app and GPO (ADMX), however some discrepancies exist where more control is available through registry than GUI or Group Policy. This includes but is not limited to the ability to set language file location.
 
