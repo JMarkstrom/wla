@@ -21,7 +21,7 @@ This documents serves as a *compliment* to official product documentation and de
 
 
 Installation
-============
+************
 
 WIP
 
