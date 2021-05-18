@@ -1,7 +1,5 @@
-.. Documentation master file, created by
-   sphinx-quickstart on Sat Mar  6 02:48:40 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Updated by Jonas Markström on May 18, 2021
+
 =========================
 Windows Logon Agent (WLA)
 =========================
@@ -19,9 +17,7 @@ Windows Logon Agent (WLA)
 Overview
 ========
 
-WIP
-
-
+This documents serves as a *compliment* to official product documentation and details deployment and configuration tasks relating to the Windows Login Agent (WLA). Specifically, this document outlines the various command line switches, their properties, values and descriptions for usage with either interactive, silent, local as well as remote installation.
 
 
 Deployment
