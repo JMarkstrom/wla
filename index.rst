@@ -670,6 +670,11 @@ The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete
 Customization
 *************
 
+*The following section outlines possible customizations.*
+
+Improving interactive logon User Experience (U/X)
+=================================================
+
 The default logon message(s) introduced by the Windows Logon Agent can be tailored to customer needs with messages replaced by modifying language files. This can be achieved either post installation (as seen below) or prior installation (by modifying the MSI package itself).
 
 
