@@ -25,6 +25,106 @@ Deployment
 
 WIP
 
+
+Silent installation
+===================
+
+One approach to controlling the choices made to the installer during installation is to run the installation silently with parameters. This allows the customer to set key configuration items such as authentication server FQDN and logon mode.
+
+The following section provides an example of silent installation :code:`/quiet` switch followed by product settings. A list of key product settings as well as useful generic MSI switches are then provided in the following tables.
+
+Example of silent install for STA EU cloud that caches the Windows password and excludes administrators from the use of MFA:
+
+.. Code-block:: powershell
+
+   msiexec /i <installerName>.msi /quiet
+   COMPANYNAME=swedemo TOKENVALIDATORLOCATION=cloud.eu.safenetid.com
+   USESSL=s USEFAILOVER=0 LOGONMODE=1 EXEMPTADMINS=1
+
+Example of silent installation *without* forced reboot:
+
+::
+
+    msiexec /i <installerName>.msi /quiet REBOOT=ReallySupress
+
+
+.. note::
+   In the above examples the installation will run without the user noticing. If the :code:`/quiet` switch is removed the installer will run in interactive mode, but with the applicable settings pre-populated.
+
+
+WLA command line switches
+-------------------------
+
+The following table outlines :abbr:`WLA (Windows Logon Agent)` specific properties with possible values as well as their explanation (relating mostly to the GUI based options). The wording used here does not match the actual GUI options.
+
++--------------------------+--------+----------------------------------------------------------+
+|MSI switch/key            |Value(s)|Explanation                                               |
++==========================+========+==========================================================+
+|COMPANYNAME               |string  | Company name (any).                                      |
++--------------------------+--------+----------------------------------------------------------+
+|TOKENVALIDATORLOCATION    |FQDN    | Defines primary authentication server                    |
++--------------------------+--------+----------------------------------------------------------+
+|TOKENVALIDATORLOCATION2   |FQDN    || Defines secondary authentication server                 |
+|                          |        ||                                                         |
+|                          |        || Note: set the value to *primary* for STA                |
++--------------------------+--------+----------------------------------------------------------+
+|USEFAILOVER               |1 (0)   || **1** = failover enabled                                |
+|                          |        || **0** = no failover                                     |
+|                          |        ||                                                         |
+|                          |        || Note: this option **must** be used with key             |
+|                          |        || *TOKENVALIDATORLOCATION2*                               |
++--------------------------+--------+----------------------------------------------------------+
+|USESSL                    |s       || **s** = toggles use of SSL (requires certificates)      |
+|                          |        || for primary server                                      |
++--------------------------+--------+----------------------------------------------------------+
+|USESSL2                   |s       || **s** = toggles use of SSL (requires certificates)      |
+|                          |        || for secondary server                                    |
++--------------------------+--------+----------------------------------------------------------+
+|LOGONMODE                 |1 (0)   || **1** = Windows password is hidden (cached)             |
+|                          |        || **0** = Windows password and MFA is required            |
++--------------------------+--------+----------------------------------------------------------+
+|EXEMPTADMINS              |1 (0)   || **1** = Exempts administrators from using MFA           |
+|                          |        || **0** = Everybody must use MFA                          |
++--------------------------+--------+----------------------------------------------------------+
+|USEGRID                   |1 (0)   || **1** = GRIDSure is enabled                             |
+|                          |        || **0** = GRIDSure is disabled                            |
++--------------------------+--------+----------------------------------------------------------+
+|RDPWITHOUTOTP             |1 (0)   || **1** = Allows outgoing RDP connection without OTP      |
+|                          |        || **0** = Outgoing RDP is subject to OTP                  |
++--------------------------+--------+----------------------------------------------------------+
+
+.. attention::
+   Note that examining the MSI package with logging you will find additional keys/switches that non-functional, possibly deprecated by Engineering. These include, but are not limited to :code:`EXEMPTADMINSCHECK`, :code:`EXEMPTADMINSCHECK1`, :code:`KEYFILEPATH`, :code:`KEYFILE` and :code:`USEGRIDCHECK`.
+
+Generic MSI command line switches
+---------------------------------
+
+The following table outlines :abbr:`MSI (Microsoft Installer)` switches that can be useful when installing WLA.
+
++----------------+--------------+------------------------------------------------------------+
+|MSI switch/key  |Value(s)      |Explanation                                                 |
++================+==============+============================================================+
+| /i             |              | Basic install switch when run from command line            |
++----------------+--------------+------------------------------------------------------------+
+| /quiet         |              | Installs package in silent mode (e.g. in background)       |
++----------------+--------------+------------------------------------------------------------+
+| /passive       |              || Installer displays a progress bar to the user indicating  |
+|                |              || an ongoing (silent) installation                          |
++----------------+--------------+------------------------------------------------------------+
+| /log           | /L*V         | Creates an installation log file                           |
++----------------+--------------+------------------------------------------------------------+
+| REBOOT         |ReallySupress || By default when running in silent mode the computer will  |
+|                |              || automatically reboot on installation completion. To avoid |
+|                |              || this behavior you can use REBOOT=ReallySupress instead.   |
+|                |              || In this case the installation will complete on the next   |
+|                |              || user initiated reboot                                     |
++----------------+--------------+------------------------------------------------------------+
+
+Interactive installation
+========================
+For user controlled interactive installation, please refer to official product documentation.
+
+
 Group Policy Object (GPO)
 =========================
 
@@ -569,107 +669,6 @@ If there are more than one GPO linked to an OU/Domain, then the processing order
 
 The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete
 
-
-
-
-
-Silent installation
-===================
-
-One approach to controlling the choices made to the installer during installation is to run the installation silently with parameters. This allows the customer to set key configuration items such as authentication server FQDN and logon mode.
-
-The following section provides an example of silent installation :code:`/quiet` switch followed by product settings. A list of key product settings as well as useful generic MSI switches are then provided in the following tables.
-
-Example of silent install for STA EU cloud that caches the Windows password and excludes administrators from the use of MFA:
-
-.. Code-block:: powershell
-
-   msiexec /i <installerName>.msi /quiet
-   COMPANYNAME=swedemo TOKENVALIDATORLOCATION=cloud.eu.safenetid.com
-   USESSL=s USEFAILOVER=0 LOGONMODE=1 EXEMPTADMINS=1
-
-Example of silent installation *without* forced reboot:
-
-::
-
-    msiexec /i <installerName>.msi /quiet REBOOT=ReallySupress
-
-
-.. note::
-   In the above examples the installation will run without the user noticing. If the :code:`/quiet` switch is removed the installer will run in interactive mode, but with the applicable settings pre-populated.
-
-
-WLA command line switches
--------------------------
-
-The following table outlines :abbr:`WLA (Windows Logon Agent)` specific properties with possible values as well as their explanation (relating mostly to the GUI based options). The wording used here does not match the actual GUI options.
-
-+--------------------------+--------+----------------------------------------------------------+
-|MSI switch/key            |Value(s)|Explanation                                               |
-+==========================+========+==========================================================+
-|COMPANYNAME               |string  | Company name (any).                                      |
-+--------------------------+--------+----------------------------------------------------------+
-|TOKENVALIDATORLOCATION    |FQDN    | Defines primary authentication server                    |
-+--------------------------+--------+----------------------------------------------------------+
-|TOKENVALIDATORLOCATION2   |FQDN    || Defines secondary authentication server                 |
-|                          |        ||                                                         |
-|                          |        || Note: set the value to *primary* for STA                |
-+--------------------------+--------+----------------------------------------------------------+
-|USEFAILOVER               |1 (0)   || **1** = failover enabled                                |
-|                          |        || **0** = no failover                                     |
-|                          |        ||                                                         |
-|                          |        || Note: this option **must** be used with key             |
-|                          |        || *TOKENVALIDATORLOCATION2*                               |
-+--------------------------+--------+----------------------------------------------------------+
-|USESSL                    |s       || **s** = toggles use of SSL (requires certificates)      |
-|                          |        || for primary server                                      |
-+--------------------------+--------+----------------------------------------------------------+
-|USESSL2                   |s       || **s** = toggles use of SSL (requires certificates)      |
-|                          |        || for secondary server                                    |
-+--------------------------+--------+----------------------------------------------------------+
-|LOGONMODE                 |1 (0)   || **1** = Windows password is hidden (cached)             |
-|                          |        || **0** = Windows password and MFA is required            |
-+--------------------------+--------+----------------------------------------------------------+
-|EXEMPTADMINS              |1 (0)   || **1** = Exempts administrators from using MFA           |
-|                          |        || **0** = Everybody must use MFA                          |
-+--------------------------+--------+----------------------------------------------------------+
-|USEGRID                   |1 (0)   || **1** = GRIDSure is enabled                             |
-|                          |        || **0** = GRIDSure is disabled                            |
-+--------------------------+--------+----------------------------------------------------------+
-|RDPWITHOUTOTP             |1 (0)   || **1** = Allows outgoing RDP connection without OTP      |
-|                          |        || **0** = Outgoing RDP is subject to OTP                  |
-+--------------------------+--------+----------------------------------------------------------+
-
-.. attention::
-   Note that examining the MSI package with logging you will find additional keys/switches that non-functional, possibly deprecated by Engineering. These include, but are not limited to :code:`EXEMPTADMINSCHECK`, :code:`EXEMPTADMINSCHECK1`, :code:`KEYFILEPATH`, :code:`KEYFILE` and :code:`USEGRIDCHECK`.
-
-Generic MSI command line switches
----------------------------------
-
-The following table outlines :abbr:`MSI (Microsoft Installer)` switches that can be useful when installing WLA.
-
-+----------------+--------------+------------------------------------------------------------+
-|MSI switch/key  |Value(s)      |Explanation                                                 |
-+================+==============+============================================================+
-| /i             |              | Basic install switch when run from command line            |
-+----------------+--------------+------------------------------------------------------------+
-| /quiet         |              | Installs package in silent mode (e.g. in background)       |
-+----------------+--------------+------------------------------------------------------------+
-| /passive       |              || Installer displays a progress bar to the user indicating  |
-|                |              || an ongoing (silent) installation                          |
-+----------------+--------------+------------------------------------------------------------+
-| /log           | /L*V         | Creates an installation log file                           |
-+----------------+--------------+------------------------------------------------------------+
-| REBOOT         |ReallySupress || By default when running in silent mode the computer will  |
-|                |              || automatically reboot on installation completion. To avoid |
-|                |              || this behavior you can use REBOOT=ReallySupress instead.   |
-|                |              || In this case the installation will complete on the next   |
-|                |              || user initiated reboot                                     |
-+----------------+--------------+------------------------------------------------------------+
-
-Interactive installation
-========================
-For user controlled interactive installation, please refer to official product documentation.
 
 
 Traffic
