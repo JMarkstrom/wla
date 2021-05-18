@@ -127,8 +127,8 @@ For user controlled interactive installation, please refer to official product d
    Make sure you always install from the MSI package unless there is a real compelling reason to use the :file:`.exe` file.
 
 
-Group Policy Object (GPO) based installation
-============================================
+Group Policy based installation
+===============================
 
 Group Policy enables policy-based administration that allows to centrally manage and configure many policy settings. Group Policy uses directory services and security group membership to provide flexibility and support extensive configuration information. Policy settings are specified by an administrator
 For more information about GPO, please refer to `Group Policy Overview <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831791(v=ws.11)>`_
