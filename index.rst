@@ -667,33 +667,6 @@ If there are more than one GPO linked to an OU/Domain, then the processing order
 The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete
 
 
-
-Traffic
-=======
-
-The following traffic must be allowed for the :abbr:`WLA (Windows Logon Agent)` to function.
-
-.. note::
-   Allow or white-list hosts according to your STA hosting zone. If you are uncertain about what hosting zone to use, look at your operator (console) URL.
-
-+-------+----+----------------------+----------------------+----------------------+
-|Service|Port|EU Service Zone       |US Service Zone       |Classic Service Zone  |
-+=======+====+======================+======================+======================+
-|AuthN  |443 |cloud.eu.safenetid.com|cloud.us.safenetid.com|agent1.safenet-inc.com|
-+-------+----+----------------------+----------------------+----------------------+
-|Push   |443 |sps.eu.safenetid.com  |sps.us.safenetid.com  |sps.safenet-inc.com   |
-+-------+----+----------------------+----------------------+----------------------+
-
-TLS 1.2
--------
-.. attention::
-   SafeNet Trusted Access currently implements a requirement on TLS **v1.2**.
-
-Some Operating Systems such as **Windows 7** does not support TLS 1.2 natively and the use of Windows Logon Agent will fail unless protocol support is modified.
-
-To learn more, please refer to  `Microsoft documentation <https://support.microsoft.com/en-ie/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi>`_
-
-
 Customizing the WLA logon experience
 ************************************
 
@@ -866,6 +839,32 @@ With regards to the use deployment tools it's important to note that :abbr:`WLA 
 
 Appendix
 ********
+
+
+Traffic
+=======
+
+The following traffic must be allowed for the :abbr:`WLA (Windows Logon Agent)` to function.
+
+.. note::
+   Allow or white-list hosts according to your STA hosting zone. If you are uncertain about what hosting zone to use, look at your operator (console) URL.
+
++-------+----+----------------------+----------------------+----------------------+
+|Service|Port|EU Service Zone       |US Service Zone       |Classic Service Zone  |
++=======+====+======================+======================+======================+
+|AuthN  |443 |cloud.eu.safenetid.com|cloud.us.safenetid.com|agent1.safenet-inc.com|
++-------+----+----------------------+----------------------+----------------------+
+|Push   |443 |sps.eu.safenetid.com  |sps.us.safenetid.com  |sps.safenet-inc.com   |
++-------+----+----------------------+----------------------+----------------------+
+
+TLS 1.2
+-------
+.. attention::
+   SafeNet Trusted Access currently implements a requirement on TLS **v1.2**.
+
+Some Operating Systems such as **Windows 7** does not support TLS 1.2 natively and the use of Windows Logon Agent will fail unless protocol support is modified.
+
+To learn more, please refer to  `Microsoft documentation <https://support.microsoft.com/en-ie/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi>`_
 
 
 Registry keys
