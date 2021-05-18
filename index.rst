@@ -23,8 +23,6 @@ This documents serves as a *compliment* to official product documentation and de
 Installation
 ************
 
-WIP
-
 
 Silent installation
 ===================
@@ -126,7 +124,7 @@ Interactive installation
 For user controlled interactive installation, please refer to official product documentation.
 
 .. attention::
-   Make sure you always install from the MSI package unless there is a real compelling reason to use the EXE file.
+   Make sure you always install from the MSI package unless there is a real compelling reason to use the :file:`.exe` file.
 
 
 Group Policy Object (GPO) based installation
