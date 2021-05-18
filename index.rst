@@ -670,7 +670,8 @@ The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete
 Customization
 *************
 
-*The following section outlines possible customizations.*
+The following section outlines possible customizations.
+
 
 Improving interactive logon User Experience (U/X)
 =================================================
