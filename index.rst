@@ -124,6 +124,9 @@ Interactive installation
 ========================
 For user controlled interactive installation, please refer to official product documentation.
 
+.. attention::
+   Make sure you always install from the MSI package unless there is a real compelling reason to use the EXE file.
+
 
 Group Policy Object (GPO)
 =========================
