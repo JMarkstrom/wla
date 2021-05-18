@@ -122,23 +122,19 @@ The following table outlines :abbr:`MSI (Microsoft Installer)` switches that can
 
 Interactive installation
 ========================
+
 For user controlled interactive installation, please refer to official product documentation.
 
 .. attention::
    Make sure you always install from the MSI package unless there is a real compelling reason to use the EXE file.
 
 
-Group Policy Object (GPO)
-=========================
-
-Installing WLA and Configuring Settings via Group Policy Object (GPO)
-*********************************************************************
+Group Policy Object (GPO) based installation
+============================================
 
 Group Policy enables policy-based administration that allows to centrally manage and configure many policy settings. Group Policy uses directory services and security group membership to provide flexibility and support extensive configuration information. Policy settings are specified by an administrator
 For more information about GPO, please refer to `Group Policy Overview <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831791(v=ws.11)>`_
 
-Installation of SafeNet Windows Logon Agent (WLA) via GPO
-*********************************************************
 
 To install the SafeNet Windows Logon Agent via GPO, follow these steps:
 
@@ -843,7 +839,7 @@ The following is an example RDP file for a VM in Microsoft Azure. To use this as
 
 
 Uninstalling
-============
+************
 
 The :abbr:`WLA (Windows Logon Agent)` can be uninstalled either from **Control Panel**, by running the MSI again -or silently using the following command:
 
@@ -855,7 +851,7 @@ The :abbr:`WLA (Windows Logon Agent)` can be uninstalled either from **Control P
    If the Windows Logon Agent was installed using the provided :file:`.exe` then you cannot uninstall it using the :file:`.msi` and vice versa. Doing so may lead to a situation where the agent cannot be fully uninstalled.
 
 Upgrading
-=========
+*********
 
 
 //TODO: Get clarification from R&D on upgrade procedure and supported *from* versions: upgrade from 2.x appears not to work.
@@ -869,6 +865,9 @@ With regards to the use deployment tools it's important to note that :abbr:`WLA 
 
 .. note::
    With ProductCode being the same, this approach to upgrade will not work *unless* the MSI is modified and re-signed using a trusted certificate.
+
+Appendix
+********
 
 
 Registry keys
