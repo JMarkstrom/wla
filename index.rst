@@ -667,8 +667,8 @@ If there are more than one GPO linked to an OU/Domain, then the processing order
 The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete
 
 
-Customizing the WLA logon experience
-************************************
+Customization
+*************
 
 The default logon message(s) introduced by the Windows Logon Agent can be tailored to customer needs with messages replaced by modifying language files. This can be achieved either post installation (as seen below) or prior installation (by modifying the MSI package itself).
 
