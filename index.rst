@@ -846,6 +846,34 @@ With regards to the use deployment tools it's important to note that :abbr:`WLA 
 Appendix
 ********
 
+Installing with log to discover MSI properties
+==============================================
+
+Installing with a log file created locally on the target machine is useful for understanding general installation behavior as well as for troubleshooting purposes, but more so in the scope of deployment automation: to understand what key values (properties) of the installation might be manipulated, that is: supplied as installation switches (as discussed in this guide), in a transform, or modified in the package itself. 
+
+Install with logging
+--------------------
+
+#. Open a command prompt (cmd)
+#. Change directory (cd) to where the WLA installer package reside
+#. Execute the following command to install with a local log file generated:
+
+::
+
+    msiexec /i "C:\SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" /L*V "C:\wla_installation.log"
+
+Review the log file
+-------------------
+
+#. Allow the installation to complete (interact with installer as necessary)
+#. Open the log file in your text editor of choice
+#. Examine the log for the occurrence of :file:`Property(S):`
+
+.. thumbnail:: /images/wla/examineLog.png
+  :width: 100%
+  :title: Figure: Examining possible MSI switches from installation log.
+  :show_caption: true
+
 
 Traffic
 =======
@@ -892,7 +920,7 @@ In case you want to add your own key file or display your own customized message
 
 .. warning::
    The procedure may void customer support or make interaction with Thales Support all the more difficult.
-   
+  
 Replacing file content of the MSI cabinet file
 ----------------------------------------------
 
@@ -937,7 +965,7 @@ Changing a Property of the MSI
 
 This approach is less invasive and only changes property values within the Property table of the MSI. It can be used to set authentication server and various key values (basically anything you can set with external command line switches on the MSI).
  
-#1. Right-click the applicable WLA installer MSI file
+#. Right-click the applicable WLA installer MSI file
 #. From the context menu, select :guilabel:`&Edit with Orca`.
 #. In the *Tables* column (left hand side), scroll down to and select :guilabel:`&Property`
 #. Edit the appropriate values
