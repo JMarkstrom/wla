@@ -207,7 +207,7 @@ After the Administrative Template has been added, you can open the template to c
       :width: 80%
       :title: Figure: Group Policy Editor.
       :show_caption: true
-|
+
 #. Complete one of the following actions:
 
    - To propagate the settings to all clients in the domain, right-click **Default Domain Policy** or **newly created GPO** under the domain node.
