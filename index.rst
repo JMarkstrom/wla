@@ -883,3 +883,143 @@ The WLA registry keys are available under:
 ::
 
     HKEY_LOCAL_MACHINE\SOFTWARE\CRYPTOCard\AuthGINA
+
+
+Creating a custom MSI package
+=============================
+
+In case you want to add your own key file or display your own customized messages in the login screen, but you do not, or *cannot* externalize these configurations (replacing the UI language between install and reboot might be perceived as a challenge by the customer), one option is to modify the MSI itself. This does away with the need for command line switches and dependency on GPO’s, batch jobs or PowerShell scripting. On the flip side, the procedure is tedious and prone to errors and will make upgrades more challenging. 
+
+.. warning::
+   The procedure may void customer support or make interaction with Thales Support all the more difficult.
+   
+Replacing file content of the MSI cabinet file
+----------------------------------------------
+
+This approach will require changing hashes of files modified or replaced, updating file versions and rebuilding and resigning the MSI. If you only need to set a few parameters on the MSI, please refer to the second example (below) instead. In the example we replace the key file, but the procedure is applicable to other content as well.
+
+#. Open a command prompt (cmd)
+#. Change directory to where you have the MSI package to be modified
+#. Extract the cabinet file containing the default :file:`Agent.bsidkey` file using the following command:
+
+::
+
+    msidb.exe -d "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -x Data1.cab
+
+#. Remove the cabinet file from within the MSI by executing the following command:
+
+::
+
+    msidb.exe -d "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -k Data1.cab 
+
+#. Using your archive tool of choice select the :file:`Data1.cab` file and extract its content to a directory called :file:`Data1\`
+#. Delete (or store elsewhere) the original :file:`Data1.cab` file
+#. Browse to the folder :file:`Data1\`
+#. Delete the existing :file:`Agent.bsidkey` file
+#. Paste your virtual server specific :file:`Agent.bsidkey` file into the directory
+#. Paste the :file:`wla.ddf` file file into the :file:`Data1\` directory
+#. From a command prompt and standing in the :file:`Data1\` directory, execute command to create a new CAB file: 
+
+::
+
+    MakeCab.exe /F wla.ddf
+
+#. Move the newly created cabinet file to parent directory (where the MSI package is)
+#. Now import the modified Cab into the MSI package by executing the command:
+
+::
+
+    Msidb.exe -d "C:\test\SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -a Data1.cab
+
+
+Changing a Property of the MSI
+------------------------------
+
+This approach is less invasive and only changes property values within the Property table of the MSI. It can be used to set authentication server and various key values (basically anything you can set with external command line switches on the MSI).
+ 
+#1. Right-click the applicable WLA installer MSI file
+#. From the context menu, select :guilabel:`&Edit with Orca`.
+#. In the *Tables* column (left hand side), scroll down to and select :guilabel:`&Property`
+#. Edit the appropriate values
+#. Go to *File* and select :guilabel:`&Save` (or :guilabel:`&Save As`) from the menu
+#. Again, go to *File* but now select :guilabel:`&Exit`.
+
+Updating MSI file hashes
+------------------------
+
+If an MSI is modified beyond changing key value pairs, it will need to have its modified file’s hashes updated to the MSI tables or installation will fail. In this step you extract the original MSI, add your changes, and then use the full set of extracted files (original + modified) to update the file hashes within the modified MSI. This negates the need to use functions like MsiGetFileHash(…).
+
+#. Open a command prompt (cmd)
+#. Change directory to where you have the *original* MSI package
+#. Extract the MSI content of the original file using the following command:
+ 
+::
+
+    msiexec /a "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" /qb TARGETDIR=C:\extractedOriginalMSI
+	
+#. Replace (copy/paste) your modified content (for example key file) into the extracted folder
+#. Change directory to where you have the *modified* MSI package 
+#. Update the hashes in your modified MSI package by executing the following command:
+
+::
+
+    msifiler.exe -d "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -h -s C:\extractedOriginalMSI
+
+.. note::
+   In the above example we already have a fully modified MSI as well as the original MSI at hand. 
+
+Making final touches with InstaEd MSI editor
+--------------------------------------------
+
+InstaEd is used here over Orca because it is capable of comparing two MSI files. Orca can still be used, but it will take a little more effort.
+
+#. Right-click your modified MSI and select :guilabel:`&InstaEd it!` from the context menu
+#. From the top menu bar click :guilabel:`&Transform` and then select :guilabel:`&Compare against..` from the context menu.
+#. Select the original (unmodified MSI package)
+#. In the comparison, refer to green highlights and make notes of any difference that may be a concern, e.g. version changes on files.
+#. Edit your modified MSI as applicable using either **Orca** or **InstaEd**
+#. Save the changes.
+
+Testing an MSI for errors
+-------------------------
+
+If you modify the MSI package you will want to examine it for errors (as well as run test installation before any production deployment). 
+
+.. attention::
+   Because error checking may show “errors” in the GA release MSI file (the original unmodified package), you should run the command outlined below, first on the original file and then on the modified file.  
+
+#. Open a command prompt (cmd)
+#. Change directory to where you have the [original] MSI package to be modified
+#. Run the following command on the MSI to create a text file listing possible MSI errors:
+
+::
+
+    msival2 "C:\SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" "darice.cub" /l C:\wla_errors.txt
+
+#. Repeat steps 1-2 (above) but examining your modified MSI package
+#. Use your diff tool of choice to understand what errors your modifications may have incurred.
+
+
+
+Signing the modified MSI with a code signing certificate
+--------------------------------------------------------
+
+The MSI may need to be re-signed with a certificate trusted in the organization where the MSI is to be installed. If the MSI is not signed, then installation may fail or produce warning messages.
+
+#. Open a command prompt (cmd) and navigate to the folder where you have the modified MSI
+#. Sign the modified MSI using your code signing certificate:
+
+Method 1: Using an HSM (you really should):
+
+::
+
+    Signtool.exe sign /f codeSigningCert.crt /cng "Luna Cryptographic Services for Microsoft Windows" /kc hsmPartition /tr http://timestamp.digicert.com /td sha256 /fd sha1 "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi"
+
+Method 2: With the certificate on local disk:
+
+::
+
+    Signtool.exe sign /v /f "codeSigningCert.pfx" /p "PASSWORD" /v "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi"
+
+
+
