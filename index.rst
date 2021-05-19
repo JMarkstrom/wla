@@ -589,7 +589,7 @@ Create an MST file
 
 To create an MST file, you need to install the **ORCA** tool. It is a free utility from Microsoft, available with the Windows SDK package (Developer Tool).
 
-.. note:: You can download the **ORCA** tool `here <https://docs.microsoft.com/en-us/windows/win32/msi/orca-exe>`_
+.. tip:: You can download the **ORCA** tool `here <https://docs.microsoft.com/en-us/windows/win32/msi/orca-exe>`_
 
 #. After the successful installation of the tool, **right-click** the SafeNet Windows Logon Agent MSI file in the previously created shared folder
 #. Click :guilabel:`Edit with Orca`
@@ -915,7 +915,9 @@ Review the log file
 Using MS Orca to discover MSI properties
 ========================================
 
-An alternative to working from installation log is to use *Microsoft Orca*, a graphical MSI editor shipped with the Windows 7 SDK. 
+An alternative to working from installation log is to use *Microsoft Orca*, a graphical MSI editor shipped with the Windows 7 SDK.
+
+.. tip:: You can download the **ORCA** tool `here <https://docs.microsoft.com/en-us/windows/win32/msi/orca-exe>`_
 
 Using Orca to view the MSI Property table
 
@@ -1059,6 +1061,9 @@ Making final touches with InstaEd MSI editor
 --------------------------------------------
 
 InstaEd is used here over Orca because it is capable of comparing two MSI files. Orca can still be used, but it will take a little more effort.
+
+.. tip:: You can download the **InstaED** tool `here <http://www.instedit.com/download2.html?file=InstEd-1.5.15.26.msi>`_
+
 
 #. Right-click your modified MSI and select :guilabel:`&InstaEd it!` from the context menu
 #. From the top menu bar click :guilabel:`&Transform` and then select :guilabel:`&Compare against..` from the context menu.
