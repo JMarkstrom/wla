@@ -578,7 +578,7 @@ To create an MST file, you need to install the **ORCA** tool. It is a free utili
 
 .. note:: You can download the **ORCA** tool `here <https://docs.microsoft.com/en-us/windows/win32/msi/orca-exe>`_
 
-1. After the successful installation of the tool, **right-click** the SafeNet Windows Logon Agent MSI file (SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi) in the previously created shared folder
+1. After the successful installation of the tool, **right-click** the SafeNet Windows Logon Agent MSI file in the previously created shared folder
 
 2. Click :guilabel:`Edit with Orca`
 
@@ -633,7 +633,7 @@ Perform these steps to deploy the MST and the MSI files:
 
 2. Right-click **Software Installation** and slect :guilabel:`New` > :guilabel:`Package...`
 
-3. Browse and select the SafeNet Windows Logon Agent MSI file (**SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi**) from the previously created shared folder
+3. Browse and select the SafeNet Windows Logon Agent MSI file from the previously created shared folder
 
 4. In **Deploy Software** pop up, select :guilabel:`Advanced` and click :guilabel:`OK`
 
@@ -860,7 +860,7 @@ Install with logging
 
 ::
 
-    msiexec /i "C:\SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" /L*V "C:\wla_installation.log"
+    msiexec /i <installerName>.msi /L*V "C:\wla_installation.log"
 
 Review the log file
 -------------------
@@ -957,13 +957,13 @@ This approach will require changing hashes of files modified or replaced, updati
 
 ::
 
-    msidb.exe -d "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -x Data1.cab
+    msidb.exe -d <installerName>.msi -x Data1.cab
 
 #. Remove the cabinet file from within the MSI by executing the following command:
 
 ::
 
-    msidb.exe -d "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -k Data1.cab 
+    msidb.exe -d <installerName>.msi -k Data1.cab 
 
 #. Using your archive tool of choice select the :file:`Data1.cab` file and extract its content to a directory called :file:`Data1\`
 #. Delete (or store elsewhere) the original :file:`Data1.cab` file
@@ -982,7 +982,7 @@ This approach will require changing hashes of files modified or replaced, updati
 
 ::
 
-    Msidb.exe -d "C:\test\SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -a Data1.cab
+    Msidb.exe -d <installerName>.msi -a Data1.cab
 
 
 Changing a Property of the MSI
@@ -1008,7 +1008,7 @@ If an MSI is modified beyond changing key value pairs, it will need to have its 
  
 ::
 
-    msiexec /a "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" /qb TARGETDIR=C:\extractedOriginalMSI
+    msiexec /a <installerName>.msi /qb TARGETDIR=C:\extractedOriginalMSI
 	
 #. Replace (copy/paste) your modified content (for example key file) into the extracted folder
 #. Change directory to where you have the *modified* MSI package 
@@ -1016,7 +1016,7 @@ If an MSI is modified beyond changing key value pairs, it will need to have its 
 
 ::
 
-    msifiler.exe -d "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" -h -s C:\extractedOriginalMSI
+    msifiler.exe -d <installerName>.msi -h -s C:\extractedOriginalMSI
 
 .. note::
    In the above example we already have a fully modified MSI as well as the original MSI at hand. 
@@ -1047,7 +1047,7 @@ If you modify the MSI package you will want to examine it for errors (as well as
 
 ::
 
-    msival2 "C:\SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi" "darice.cub" /l C:\wla_errors.txt
+    msival2 <installerName>.msi "darice.cub" /l C:\wla_errors.txt
 
 #. Repeat steps 1-2 (above) but examining your modified MSI package
 #. Use your diff tool of choice to understand what errors your modifications may have incurred.
@@ -1066,13 +1066,13 @@ Method 1: Using an HSM (you really should):
 
 ::
 
-    Signtool.exe sign /f codeSigningCert.crt /cng "Luna Cryptographic Services for Microsoft Windows" /kc hsmPartition /tr http://timestamp.digicert.com /td sha256 /fd sha1 "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi"
+    Signtool.exe sign /f codeSigningCert.crt /cng "Luna Cryptographic Services for Microsoft Windows" /kc hsmPartition /tr http://timestamp.digicert.com /td sha256 /fd sha1 <installerName>.msi
 
 Method 2: With the certificate on local disk:
 
 ::
 
-    Signtool.exe sign /v /f "codeSigningCert.pfx" /p "PASSWORD" /v "SafeNet Authentication Service Agent for Win 8-10-2012-2016 x64.msi"
+    Signtool.exe sign /v /f "codeSigningCert.pfx" /p "PASSWORD" /v <installerName>.msi
 
 
 
