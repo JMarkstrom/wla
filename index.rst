@@ -1062,18 +1062,6 @@ The MSI may need to be re-signed with a certificate trusted in the organization 
 #. Open a command prompt (cmd) and navigate to the folder where you have the modified MSI
 #. Sign the modified MSI using your code signing certificate:
 
-Method 1: Using an HSM (you really should):
-
-::
-
-    Signtool.exe sign /f codeSigningCert.crt /cng "Luna Cryptographic Services for Microsoft Windows" /kc hsmPartition /tr http://timestamp.digicert.com /td sha256 /fd sha1 <installerName>.msi
-
-Method 2: With the certificate on local disk:
-
-::
-
-    Signtool.exe sign /v /f "codeSigningCert.pfx" /p "PASSWORD" /v <installerName>.msi
-
 
 .. tabs::
 
