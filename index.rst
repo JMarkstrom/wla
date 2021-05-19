@@ -598,23 +598,23 @@ To create an MST file, you need to install the **ORCA** tool. It is a free utili
 
    .. thumbnail:: /images/wla/orca_property.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: MSI properties in Orca.
       :show_caption: true
-|
+
 #. Double-click the value of property **AGENTMODE** and set it as **1**
 
    .. thumbnail:: /images/wla/agentmode.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Setting agent mode to 1 (enabled).
       :show_caption: true
-|
+
 #. Double-click the value of property **JSONFILEPATH** and set it to the path on the client machine where the Agent configuration file will be copied to
 
    .. thumbnail:: /images/wla/jsonfilepath.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Setting path to STA key file.
       :show_caption: true
-|
+
 #. Click :guilabel:`File` > :guilabel:`Generate Transform...`
 #. Save your Transform (.mst) file with a desired name
 
@@ -627,24 +627,24 @@ Perform these steps to copy the Agent configuration file to the client machines 
 
    .. thumbnail:: /images/wla/files.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Distributing the key file to clients.
       :show_caption: true
-|
+
 #. Right-click **Files** and select :guilabel:`New` > :guilabel:`File`
 #. In **New File Properties** select :guilabel:`Create` from the **Action** dropdown
 
    .. thumbnail:: /images/wla/new.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Create file action.
       :show_caption: true
-|
+
 #. In the **Source file(s):** enter the **UNC path of a shared folder** and in **Destination File:** enter a path on the client machine where the agent configuration file will be stored
 
    .. thumbnail:: /images/wla/file_path.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Create file action (cont.).
       :show_caption: true
-|
+
 .. note:: Keep the Agent COnfiguration file in the shared folder
 
 
@@ -657,25 +657,25 @@ Perform these steps to deploy the MST and the MSI files:
 
    .. thumbnail:: /images/wla/software.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Configuring software deployment.
       :show_caption: true
-|
+
 #. Right-click **Software Installation** and slect :guilabel:`New` > :guilabel:`Package...`
 #. Browse and select the SafeNet Windows Logon Agent MSI file from the previously created shared folder
 #. In **Deploy Software** pop up, select :guilabel:`Advanced` and click :guilabel:`OK`
 
    .. thumbnail:: /images/wla/deploy.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Using the advanced method for more flexibility.
       :show_caption: true
-|
+
 #. Go to the **Modifications** Tab, and click :guilabel:`Add...`
 
    .. thumbnail:: /images/wla/modification.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Select Modify to use the transform.
       :show_caption: true
-|
+
 #. Select the MST file and click :guilabel:`OK`
 
 .. note:: Both the MST and the MSI should be selected from the shared folder
