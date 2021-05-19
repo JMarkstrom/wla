@@ -205,7 +205,7 @@ After the Administrative Template has been added, you can open the template to c
 
    .. thumbnail:: /images/wla/gpmc.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: Determining target scope of policy.
       :show_caption: true
 
 #. Complete one of the following actions:
