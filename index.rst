@@ -144,7 +144,9 @@ To deploy an MSI through GPO, you need to perform these steps to create a distri
 #. Log in to the server as an administrator
 #. Create a shared network folder
 
-.. note:: The shared network folder will contain the MSI package and the Agent Configuration file
+   .. note::
+   
+      The shared network folder will contain the MSI package and the Agent Configuration file
 
 #. Set permissions on this folder to allow access to the distribution package
 #. Copy the MSI and Agent file to the previously created shared network folder
