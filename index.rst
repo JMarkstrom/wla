@@ -199,24 +199,31 @@ After the Administrative Template has been added, you can open the template to c
 
 **To open the SafeNet Windows Logon Agent settings:**
 
-1. Open the Windows **Run** menu and type in :code:`gpmc.msc`
-2. Click :guilabel:`OK`
-3. The **Group Policy Management** windows opens
+#. Open the Windows **Run** menu and type in :code:`gpmc.msc`
+#. Click :guilabel:`OK`
+#. The **Group Policy Management** windows opens
 
 .. thumbnail:: /images/wla/gpmc.png
-
-4. Complete one of the following actions:
+  :width: 100%
+  :title: Figure: Group Policy Editor.
+  :show_caption: true
+|
+#. Complete one of the following actions:
 
 - To propagate the settings to all clients in the domain, right-click **Default Domain Policy** or **newly created GPO** under the domain node.
 
 - To apply the settings to the local machine and any other domain controllers in this domain, under the **Domain Controllers** node, right-click **Default Domain Controllers Policy**
 
-5. From the dropdown menu, select :guilabel:`Edit...`. The **Group Policy Management Editor** window opens
-6. In the left pane, navigate to :menuselection:`Computer Configuration --> Policies --> Administrative Templates --> WLA Policies --> AuthGINA`. The **SafeNet Windows Logon Agent** settings are displayed in the right pane
+#. From the dropdown menu, select :guilabel:`Edit...`. The **Group Policy Management Editor** window opens
+#. In the left pane, navigate to :menuselection:`Computer Configuration --> Policies --> Administrative Templates --> WLA Policies --> AuthGINA`. The **SafeNet Windows Logon Agent** settings are displayed in the right pane
 
 .. thumbnail:: /images/wla/wla_policies.png
-
-7. Enable all the required settings (except **PrimaryServiceURL** and **OptionalSecondaryServiceURL**), if not already enabled, with default value or user-defined value
+  :width: 100%
+  :title: Figure: Applicable WLA settings through Group Policy.
+  :show_caption: true
+|
+#. Enable all the required settings (except **PrimaryServiceURL** and **OptionalSecondaryServiceURL**), if not already enabled, with default value or user-defined value
+#. Enable all the required settings (except **PrimaryServiceURL** and **OptionalSecondaryServiceURL**), if not already enabled, with default value or user-defined value
 
 .. important:: The **PrimaryServiceURL** and **OptionalSecondaryServiceURL** should be set to **[Not Configured]**. The value of both the settings gets configured via the **.agent** file
 
@@ -578,44 +585,52 @@ To create an MST file, you need to install the **ORCA** tool. It is a free utili
 
 .. note:: You can download the **ORCA** tool `here <https://docs.microsoft.com/en-us/windows/win32/msi/orca-exe>`_
 
-1. After the successful installation of the tool, **right-click** the SafeNet Windows Logon Agent MSI file in the previously created shared folder
-
-2. Click :guilabel:`Edit with Orca`
-
-3. Click :guilabel:`Transform` > :guilabel:`New Transform`
-
-4. In Orca Editor, click :guilabel:`Property` from **Tables** in the left pane
+#. After the successful installation of the tool, **right-click** the SafeNet Windows Logon Agent MSI file in the previously created shared folder
+#. Click :guilabel:`Edit with Orca`
+#. Click :guilabel:`Transform` > :guilabel:`New Transform`
+#. In Orca Editor, click :guilabel:`Property` from **Tables** in the left pane
 
 .. thumbnail:: /images/wla/orca_property.png
+  :width: 100%
+  :title: Figure: Modifying settings in Orca.
+  :show_caption: true
+|
 
-5. Double-click the value of property **AGENTMODE** and set it as **1**
+#. Double-click the value of property **AGENTMODE** and set it as **1**
 
 .. thumbnail:: /images/wla/agentmode.png
-
-6. Double-click the value of property **JSONFILEPATH** and set it to the path on the client machine where the Agent configuration file will be copied to
+  :width: 100%
+  :title: Figure: Setting agent mode.
+  :show_caption: true
+|
+#. Double-click the value of property **JSONFILEPATH** and set it to the path on the client machine where the Agent configuration file will be copied to
 
 .. thumbnail:: /images/wla/jsonfilepath.png
 
-7. Click :guilabel:`File` > :guilabel:`Generate Transform...`
-
-8. Save your Transform (.mst) file with a desired name
+#. Click :guilabel:`File` > :guilabel:`Generate Transform...`
+#. Save your Transform (.mst) file with a desired name
 
 Copy the Agent configuration file to client machines
 ----------------------------------------------------
 
 Perform these steps to copy the Agent configuration file to the client machines using GPO file distribution:
 
-1. In the **Group Policy Management Editor** navigate to **Computer Configuration > Preferences > Windows Settings > Files**
+#. In the **Group Policy Management Editor** navigate to **Computer Configuration > Preferences > Windows Settings > Files**
 
 .. thumbnail:: /images/wla/files.png
-
-2. Right-click **Files** and select :guilabel:`New` > :guilabel:`File`
-
-3. In **New File Properties** select :guilabel:`Create` from the **Action** dropdown
+  :width: 100%
+  :title: Figure: Group Policy Editor.
+  :show_caption: true
+|
+#. Right-click **Files** and select :guilabel:`New` > :guilabel:`File`
+#. In **New File Properties** select :guilabel:`Create` from the **Action** dropdown
 
 .. thumbnail:: /images/wla/new.png
-
-4. In the **Source file(s):** enter the **UNC path of a shared folder** and in **Destination File:** enter a path on the client machine where the agent configuration file will be stored
+  :width: 100%
+  :title: Figure: Group Policy Editor.
+  :show_caption: true
+|
+#. In the **Source file(s):** enter the **UNC path of a shared folder** and in **Destination File:** enter a path on the client machine where the agent configuration file will be stored
 
 .. thumbnail:: /images/wla/file_path.png
 
@@ -627,23 +642,30 @@ Deploy MST and MSI files
 
 Perform these steps to deploy the MST and the MSI files:
 
-1. In the **Group Policy Management Editor** navigate to **Computer Configuration > Policies > Software Settings > Software Installation**
+#. In the **Group Policy Management Editor** navigate to **Computer Configuration > Policies > Software Settings > Software Installation**
 
 .. thumbnail:: /images/wla/software.png
-
-2. Right-click **Software Installation** and slect :guilabel:`New` > :guilabel:`Package...`
-
-3. Browse and select the SafeNet Windows Logon Agent MSI file from the previously created shared folder
-
-4. In **Deploy Software** pop up, select :guilabel:`Advanced` and click :guilabel:`OK`
+  :width: 100%
+  :title: Figure: Group Policy Editor.
+  :show_caption: true
+|
+#. Right-click **Software Installation** and slect :guilabel:`New` > :guilabel:`Package...`
+#. Browse and select the SafeNet Windows Logon Agent MSI file from the previously created shared folder
+#. In **Deploy Software** pop up, select :guilabel:`Advanced` and click :guilabel:`OK`
 
 .. thumbnail:: /images/wla/deploy.png
-
-5. Go to the **Modifications** Tab, and click :guilabel:`Add...`
+  :width: 100%
+  :title: Figure: Group Policy Editor.
+  :show_caption: true
+|
+#. Go to the **Modifications** Tab, and click :guilabel:`Add...`
 
 .. thumbnail:: /images/wla/modification.png
-
-6. Select the MST file and click :guilabel:`OK`
+  :width: 100%
+  :title: Figure: Group Policy Editor.
+  :show_caption: true
+|
+#. Select the MST file and click :guilabel:`OK`
 
 .. note:: Both the MST and the MSI should be selected from the shared folder
 
@@ -654,17 +676,17 @@ If there are more than one GPO linked to an OU/Domain, then the processing order
 
 .. important:: The GPO deploying the WLA Agent Configuration file has to be deployed before deploying the WLA MSI
 
-1. Open the **GPMC** console
-
-2. Select the Domain/OU to which GPOs are linked
-
-3. In the right-pane, click :guilabel:`Linked Group Policy Object` tab
-
-4. Ensure that the GPO - **Deploy SafeNet WLA Agent Configuration file** has higher **Link Order** than the GPO - **Deploy SafeNet WLA MSI and MST**. Change the **Link Order** accordingly, if required
+#. Open the **GPMC** console
+#. Select the Domain/OU to which GPOs are linked
+#. In the right-pane, click :guilabel:`Linked Group Policy Object` tab
+#. Ensure that the GPO - **Deploy SafeNet WLA Agent Configuration file** has higher **Link Order** than the GPO - **Deploy SafeNet WLA MSI and MST**. Change the **Link Order** accordingly, if required
 
 .. thumbnail:: /images/wla/gpo_order.png
-
-The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete
+  :width: 100%
+  :title: Figure: Setting GPO policy order.
+  :show_caption: true
+|
+The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete.
 
 
 Customization
@@ -1049,7 +1071,7 @@ If you modify the MSI package you will want to examine it for errors (as well as
 
     msival2 <installerName>.msi "darice.cub" /l C:\wla_errors.txt
 
-#. Repeat steps 1-2 (above) but examining your modified MSI package
+#. Repeat the above steps but examining your modified MSI package
 #. Use your diff tool of choice to understand what errors your modifications may have incurred.
 
 
