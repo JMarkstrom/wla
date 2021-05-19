@@ -874,6 +874,8 @@ Review the log file
   :title: Figure: Examining possible MSI switches from installation log.
   :show_caption: true
 
+.. tip::
+   Attempt to match the Property and its value to provided input or default input during installation. For example you might find that :file:`1` represents a checked box in one UI screen and that :file:`s` represents a checked box in another screen. 
 
 Traffic
 =======
