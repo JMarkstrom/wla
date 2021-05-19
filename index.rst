@@ -146,8 +146,8 @@ To deploy an MSI through GPO, you need to perform these steps to create a distri
 
 .. note:: The shared network folder will contain the MSI package and the Agent Configuration file
 
-3. Set permissions on this folder to allow access to the distribution package
-4. Copy the MSI and Agent file to the previously created shared network folder
+#. Set permissions on this folder to allow access to the distribution package
+#. Copy the MSI and Agent file to the previously created shared network folder
 
 Creating a Group Policy Object
 ------------------------------
@@ -172,21 +172,19 @@ The SafeNet Windows Logon Agent policy settings are stored in a **Windows Admini
 To configure settings:
 
 #. Add ADMX and ADML file to Group Policy Object (GPO) Editor
-
 #. Configure ADMX and ADML settings using GPO Editor
 
 Adding ADMX and ADML Files to Group Policy Object Editor
 --------------------------------------------------------
 
 #. Copy the Local Group Policy definition (C:\\Windows\\PolicyDefinitions) to the Domain Group Policy location (C:\\Windows\\SYSVOL\\sysvol\\<domain_name>\\Policies).
-
 #. Copy the ADMX file (:code:`<Application_name>_AgentConfig_<Date>.admx`) from Agent Installation Package, to the following location on your domain controller/server:
 
 ::
 
   C:\Windows\SYSVOL\sysvol\<domain_name>\Policies\PolicyDefinitions
 
-3. Copy the appropriate ADML language file (:code:`<Application_name>_AgentConfig_<Date>.adml`) to the language folder in the :code:`\PolicyDefinitions` folders.
+#. Copy the appropriate ADML language file (:code:`<Application_name>_AgentConfig_<Date>.adml`) to the language folder in the :code:`\PolicyDefinitions` folders.
 
 For example:
 
@@ -210,9 +208,9 @@ After the Administrative Template has been added, you can open the template to c
 |
 #. Complete one of the following actions:
 
-- To propagate the settings to all clients in the domain, right-click **Default Domain Policy** or **newly created GPO** under the domain node.
+   - To propagate the settings to all clients in the domain, right-click **Default Domain Policy** or **newly created GPO** under the domain node.
 
-- To apply the settings to the local machine and any other domain controllers in this domain, under the **Domain Controllers** node, right-click **Default Domain Controllers Policy**
+   - To apply the settings to the local machine and any other domain controllers in this domain, under the **Domain Controllers** node, right-click **Default Domain Controllers Policy**
 
 #. From the dropdown menu, select :guilabel:`Edit...`. The **Group Policy Management Editor** window opens
 #. In the left pane, navigate to :menuselection:`Computer Configuration --> Policies --> Administrative Templates --> WLA Policies --> AuthGINA`. The **SafeNet Windows Logon Agent** settings are displayed in the right pane
@@ -673,6 +671,7 @@ Perform these steps to deploy the MST and the MSI files:
 #. Select the MST file and click :guilabel:`OK`
 
 .. note:: Both the MST and the MSI should be selected from the shared folder
+
 
 Setting the GPO order
 ---------------------
