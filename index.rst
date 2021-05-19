@@ -182,9 +182,9 @@ Adding ADMX and ADML Files to Group Policy Object Editor
 #. Copy the Local Group Policy definition (C:\\Windows\\PolicyDefinitions) to the Domain Group Policy location (C:\\Windows\\SYSVOL\\sysvol\\<domain_name>\\Policies).
 #. Copy the ADMX file (:code:`<Application_name>_AgentConfig_<Date>.admx`) from Agent Installation Package, to the following location on your domain controller/server:
 
-::
+   ::
 
-  C:\Windows\SYSVOL\sysvol\<domain_name>\Policies\PolicyDefinitions
+     C:\Windows\SYSVOL\sysvol\<domain_name>\Policies\PolicyDefinitions
 
 #. Copy the appropriate ADML language file (:code:`<Application_name>_AgentConfig_<Date>.adml`) to the language folder in the :code:`\PolicyDefinitions` folders.
 
