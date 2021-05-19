@@ -877,6 +877,29 @@ Review the log file
 .. tip::
    Attempt to match the Property and its value to provided input or default input during installation. For example you might find that :file:`1` represents a checked box in one UI screen and that :file:`s` represents a checked box in another screen. 
 
+
+Using MS Orca to discover MSI properties
+========================================
+
+An alternative to working from installation log is to use *Microsoft Orca*, a graphical MSI editor shipped with the Windows 7 SDK. 
+
+Using Orca to view the MSI Property table
+
+#. Press :kbd:`Windows` + :kbd:`E` to bring up *File Explorer*
+#. Browse to the directory where the WLA installer package resides
+#. Right-click on the package and select :guilabel:`&Edit with Orca` from the context menu
+#. In table column (right hand pane) scroll down and select the *Property* row
+#. Scroll the left hand pane to discover key value pairs to can potentially be used during automated deployment.
+
+.. thumbnail:: /images/wla/propertiesInOrca.png
+  :width: 100%
+  :title: Figure: Examining possible MSI switches using MS Orca.
+  :show_caption: true
+
+.. note::
+   Not all listed properties will work. You must test each property to establish if it can be used and what are its valid potential values.
+
+
 Traffic
 =======
 
