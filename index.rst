@@ -214,11 +214,11 @@ After the Administrative Template has been added, you can open the template to c
 
       .. tab:: Propagate settings to clients
 
-         To propagate the settings to all clients in the domain, right-click **Default Domain Policy** or **newly created GPO** under the domain node.
+         Right-click **Default Domain Policy** or **newly created GPO** under the domain node.
 
       .. tab:: Propagate settings to Domain Controllers
 
-         To apply the settings to the local machine and any other domain controllers in this domain, under the **Domain Controllers** node, right-click **Default Domain Controllers Policy**
+         Navigate to the **Domain Controllers** node and right-click **Default Domain Controllers Policy**
 
 #. From the dropdown menu, select :guilabel:`Edit...`. The **Group Policy Management Editor** window opens
 #. In the left pane, navigate to :menuselection:`Computer Configuration --> Policies --> Administrative Templates --> WLA Policies --> AuthGINA`. The **SafeNet Windows Logon Agent** settings are displayed in the right pane
