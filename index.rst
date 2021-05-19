@@ -1075,4 +1075,18 @@ Method 2: With the certificate on local disk:
     Signtool.exe sign /v /f "codeSigningCert.pfx" /p "PASSWORD" /v <installerName>.msi
 
 
+.. tabs::
+
+   .. tab:: Using an HSM
+
+      ::
+
+          Signtool.exe sign /f codeSigningCert.crt /cng "Luna Cryptographic Services for Microsoft Windows" /kc hsmPartition /tr http://timestamp.digicert.com /td sha256 /fd sha1 <installerName>.msi
+
+   .. tab:: Certificate on disk
+
+      ::
+
+          Signtool.exe sign /v /f "codeSigningCert.pfx" /p "PASSWORD" /v <installerName>.msi
+
 
