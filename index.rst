@@ -221,13 +221,13 @@ After the Administrative Template has been added, you can open the template to c
          Navigate to the **Domain Controllers** node and right-click **Default Domain Controllers Policy**
 
 #. From the dropdown menu, select :guilabel:`Edit...`. The **Group Policy Management Editor** window opens
-#. In the left pane, navigate to :menuselection:`Computer Configuration --> Policies --> Administrative Templates --> WLA Policies --> AuthGINA`. The **SafeNet Windows Logon Agent** settings are displayed in the right pane
+#. In the left pane, navigate to :menuselection:`Computer Configuration --> Policies --> Administrative Templates --> WLA Policies --> AuthGINA`. The **SafeNet Windows Logon Agent** settings are displayed in the right pane:
 
    .. thumbnail:: /images/wla/wla_policies.png
       :width: 80%
-      :title: Figure: Group Policy Editor.
+      :title: Figure: WLA policy settings via GPO.
       :show_caption: true
-|
+
 #. Enable all the required settings (except **PrimaryServiceURL** and **OptionalSecondaryServiceURL**), if not already enabled, with default value or user-defined value
 #. Enable all the required settings (except **PrimaryServiceURL** and **OptionalSecondaryServiceURL**), if not already enabled, with default value or user-defined value
 
