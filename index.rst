@@ -873,7 +873,7 @@ Review the log file
   :width: 100%
   :title: Figure: Examining possible MSI switches from installation log.
   :show_caption: true
-
+|
 .. tip::
    Attempt to match the Property and its value to provided input or default input during installation. For example you might find that :file:`1` represents a checked box in one UI screen and that :file:`s` represents a checked box in another screen. 
 
@@ -895,7 +895,7 @@ Using Orca to view the MSI Property table
   :width: 100%
   :title: Figure: Examining possible MSI switches using MS Orca.
   :show_caption: true
-
+|
 .. note::
    Not all listed properties will work. You must test each property to establish if it can be used and what are its valid potential values.
 
