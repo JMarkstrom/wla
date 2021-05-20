@@ -67,3 +67,6 @@ html_favicon = 'favicon.ico'
 latex_elements = {
   'extraclassoptions': 'openany,oneside'
 }
+def setup(app):
+   app.add_stylesheet('css/custom.css')
+
