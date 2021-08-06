@@ -130,7 +130,7 @@ For user controlled interactive installation, please refer to official product d
 Group Policy based installation
 ===============================
 
-Group Policy enables policy-based administration that allows to centrally manage and configure many policy settings. Group Policy uses directory services and security group membership to provide flexibility and support extensive configuration information. Policy settings are specified by an administrator
+The use of Microsoft Group Policy or Group Policy Objects (GPO) enables the SafeNet administrator to centrally manage the Windows Logon Agent (WLA) configuration for users and computers in an Active Directory environment.
 For more information about GPO, please refer to `Group Policy Overview <https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831791(v=ws.11)>`_
 
 
