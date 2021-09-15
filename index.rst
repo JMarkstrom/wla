@@ -1,4 +1,4 @@
-.. Updated by Jonas Markström on May 18, 2021
+.. Updated by Jonas Markström on September 15, 2021
 
 =========================
 Windows Logon Agent (WLA)
@@ -90,9 +90,12 @@ The following table outlines :abbr:`WLA (Windows Logon Agent)` specific properti
 |RDPWITHOUTOTP             |1 (0)   || **1** = Allows outgoing RDP connection without OTP      |
 |                          |        || **0** = Outgoing RDP is subject to OTP                  |
 +--------------------------+--------+----------------------------------------------------------+
+|JSONFILEPATH              |string  || Path to file                                            |
+|                          |        ||                                                         |
++--------------------------+--------+----------------------------------------------------------+
 
 .. attention::
-   Note that examining the MSI package with logging you will find additional keys/switches that non-functional, possibly deprecated by Engineering. These include, but are not limited to :code:`EXEMPTADMINSCHECK`, :code:`EXEMPTADMINSCHECK1`, :code:`KEYFILEPATH`, :code:`KEYFILE` and :code:`USEGRIDCHECK`.
+   Note that examining the MSI package with logging you will find additional keys/switches that are non-functional, possibly deprecated by Engineering. These include, but are not limited to :code:`EXEMPTADMINSCHECK`, :code:`EXEMPTADMINSCHECK1`, :code:`KEYFILEPATH`, :code:`KEYFILE` and :code:`USEGRIDCHECK`.
 
 Generic MSI command line switches
 ---------------------------------
