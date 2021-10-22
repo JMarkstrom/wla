@@ -703,9 +703,10 @@ If there are more than one GPO linked to an OU/Domain, then the processing order
 |
 The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete.
 
-Deployment based on bundled JSON agent config file
-==================================================
+JSON based agent config deployment
+==================================
 
+When the :abbr:`WLA (Windows Logon Agent)` is downloaded from :abbr:`STA (SafeNet Trusted Access)` it bundles a  :file:`*.Agent` file containing JSON formatted configuration. By default the agent file will contain the primary and secondary authentication service URL as well as the client secret. With a little bit of skill and luck however the agent configuration in said file can be expanded on to apply additional settings. When installing the administrator simply needs to bundle the agent file with the installer and it will apply it's settings without the need for MSI switches or group policy.
 
 The following is an *example* *.agent configuration file that enables authenticated communication over proxy server:
 
