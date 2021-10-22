@@ -708,8 +708,9 @@ Deployment based on bundled JSON agent config file
 
 The following is an *example* *.agent configuration file that enables authenticated communication over proxy server:
 
-.. code-block:: json
+.. code-block:: yaml
    :linenos:
+   
    {
       "Data": {
             "Communication": {
@@ -723,6 +724,7 @@ The following is an *example* *.agent configuration file that enables authentica
             }
       }
    }
+
 
 
 
