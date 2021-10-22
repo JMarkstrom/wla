@@ -703,6 +703,27 @@ If there are more than one GPO linked to an OU/Domain, then the processing order
 |
 The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete.
 
+Deployment based on bundled JSON agent config file
+**************************************************
+
+.. code-block:: json
+   :linenos:
+   {
+      "Data": {
+            "Communication": {
+                   "PrimaryTokenValidatorUrl": "https://cloud.eu.safenetid.com/TokenValidator/TokenValidator.asmx?orgCode=ID",
+                   "SecondaryTokenValidatorUrl": "https://cloud.eu.safenetid.com/TokenValidator/TokenValidator.asmx?orgCode=ID",
+                   "BsidKey":   
+"65j13HVmqzyK24+Eey/KE0iYe1NCxWdTAZOyDPHSawc++7E/RZNQyLljzfxSzcTFnRpD+9UOyi7S8gEdA4Jq9Ur9nhE2MK+pdyrRYMkk7+/JDT+MtyTP69csBzAD0ZcHoWxbc+qiwKgj5fBrtQANn+T59gh+VOAv/9ll2ObYaHjhTWDgkkqvsrHoSOLGtmJL+r60AhtqyAi+unUBSLEb+fPbS976XI9uhvjLY5nen8/YGpOv8o6IlCzaW32tEchfRRwzASY9jwQ+8spogCSfuIJsAB6rbmXaKJHKBxRB0cY6qb6WnXjt55wPydA0+ZpPfog1xypFbyWKn+sXRfIYXRJkN2A2ewbApBda6BqVOEvr723IGgkCk6Qx4YJPMcppUP9JI+ziGbxceddFTgDZ+K6ZSQ+tgWJI53S5bzS8JQKRLJMhxYDLzyyWM+NGNUZ+3ZkdeCtAF4KwKbkZF6PdGTVF4XQBCVX+pbKA0behU7/voYN+RsX6LqJYJQnijAZN/l+VHcBQYcQYrqYJUQQtB/ImQQ==",
+                   "UseProxy": "1",
+                   "ProxyServer": "1.2.3.4:80",
+                   "ProxyUser": "jonas",
+                   "ProxyPassword": "password123"
+            }
+      }
+   }
+
+
 
 Customization
 *************
