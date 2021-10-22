@@ -715,6 +715,7 @@ The following is an *example* .agent configuration file that enables authenticat
 
 .. code-block:: yaml
    :linenos:
+   :emphasize-lines: 7,8,9,10
    
    {
       "Data": {
