@@ -704,7 +704,8 @@ If there are more than one GPO linked to an OU/Domain, then the processing order
 The GPO based deployment if SafeNet Windows Logon Agent (WLA) is complete.
 
 Deployment based on bundled JSON agent config file
-**************************************************
+==================================================
+
 
 The following is an *example* *.agent configuration file that enables authenticated communication over proxy server:
 
