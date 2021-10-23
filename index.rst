@@ -720,8 +720,8 @@ The following is an *example* .agent configuration file that enables authenticat
    {
       "Data": {
             "Communication": {
-                   "PrimaryTokenValidatorUrl": "https://cloud.eu.safenetid.com/TokenValidator/TokenValidator.asmx?orgCode=ID",
-                   "SecondaryTokenValidatorUrl": "https://cloud.eu.safenetid.com/TokenValidator/TokenValidator.asmx?orgCode=ID",
+                   "PrimaryTokenValidatorUrl": "uRL",
+                   "SecondaryTokenValidatorUrl": "uRL",
                    "BsidKey":  "keyFileValue",
                    "UseProxy": "1",
                    "ProxyServer": "1.2.3.4:443",
