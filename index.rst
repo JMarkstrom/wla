@@ -751,7 +751,7 @@ The default logon message(s) introduced by the Windows Logon Agent can be tailor
 
 The following instructions changes the most often seen user dialog:
 
-#. Press the :kbd:`Windwows` key and :kbd:`e` simultaneously to bring up **File Explorer**
+#. Press the :kbd:`Windows` key and :kbd:`e` simultaneously to bring up **File Explorer**
 #. Navigate to: :code:`"Program Files\SafeNet\Windows Logon\languages\en\"`
 #. Copy and paste the file :file:`LogonClient.ccl` giving it a new name (e.g. :file:`LogonClient_v2.ccl`)
 #. Open the new file in your text editor of choice and search and find: ";122"
